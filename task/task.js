@@ -65,9 +65,7 @@ const store = (user) => {
  */
 const update = (index, user) => {
   // update data array
-  users[index].name = user.name
-  users[index].age = user.age
-  users[index].major = user.major
+  users[index] = user
   // show all data
   all()
 }

@@ -1,0 +1,44 @@
+/* small screen */
+
+.container {
+    background-color: #2a9d8f;
+    padding: 1rem;
+    color: #fff;
+}
+
+.navbar__brand {
+    margin-bottom: 1rem;
+}
+
+.navbar__list {
+    list-style: none;
+}
+
+.navbar__item {
+    margin-bottom: 1rem;
+}
+
+/* medium screen */
+
+@media (min-width: 768px){
+    .container { /* menubah warna ketika tampilan tablet (medium screen) */
+        background-color: #2a9d8f;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar__list {
+        display: flex;
+    }
+
+    .navbar__item {
+        margin: 0 1rem;
+    }
+
+    .navbar__brand{
+        margin: 0;
+    }
+}

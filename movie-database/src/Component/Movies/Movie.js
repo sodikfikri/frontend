@@ -4,11 +4,10 @@ import data from "../../utils/contanst/data"
 import { useState } from "react"
 import { nanoid } from "nanoid"
 
-function Movie() {
+function Movie(props) {
 
-    // set state
-    // state mengembalikan 2 data: data saat ini dan fungsi untuk mengubah state
-    const [movies, setMovies] = useState(data)
+    const {movies, setMovies} = props
+    
     
     function tambahnFilm(){
         // logic
@@ -17,7 +16,7 @@ function Movie() {
             title: 'Jhon Wick 3',
             year: '2021',
             type: 'Movie',
-            poster: 'https://picsum.photos/seed/picsum/300/400            '
+            poster: 'https://picsum.photos/300/400'
         }
         // push data to stata
         // ...movies = spread => untuk copy data movies
@@ -42,7 +41,7 @@ function Movie() {
 
                 </div>
                 {/* menambahkan event on click */}
-                <button onClick={tambahnFilm}>Add Movie</button>
+                {/* <button onClick={tambahnFilm}>Add Movie</button> */}
             </section>
         </div>
     )

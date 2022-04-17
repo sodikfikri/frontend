@@ -1,5 +1,3 @@
-import Navbar from "../Component/Navbar/Navbar"
-import Footer from "../Component/Footer/Footer"
 import Hero from "../Component/Hero/Hero"
 import Movie from "../Component/Movies/Movie"
 import FormAddMovie from "../Component/AddMovie/FormAddMovie"
@@ -11,11 +9,9 @@ function Home(){
 
     return(
         <div>
-            <Navbar />
             <Hero />
             <Movie movies={movies} setMovies={setMovies}/>
             <FormAddMovie movies={movies} setMovies={setMovies} />
-            <Footer />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 function Alert(props){
     return (
         <div>
-            <span>{props.children}</span>
+            <span style={{color: '#d62828'}} >{props.children}</span>
         </div>
     )
 }

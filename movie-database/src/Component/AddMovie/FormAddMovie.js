@@ -7,64 +7,80 @@ function FormAddMovie(props){
     
     const {movies, setMovies} = props
 
-    // membuat state
-    const [title, setTitle] = useState("")
-    const [year, setYear] = useState("")
-    const [image, setImage] = useState("")
-    const [genre, setGenre] = useState("")
+    // membuat state object
+    const [formData, setFromData] = useState({
+        title: '',
+        year: '',
+        image: '',
+        genre: ''
+    })
+    
+    const {title, year, image, genre} = formData
 
     // membuat state untuk handle error
-    const [isTitleError, setIsTitleError] = useState(false)
-    const [isYearError, setIsYearError] = useState(false)
-    const [isImageError, setIsImageError] = useState(false)
-    const [isGenreError, setIsGenreError] = useState(false)
+    const [formErr, setFormErr] = useState({
+        etitle: false,
+        eyear: false,
+        eimage: false,
+        egenre: false
+    })
+
+    const {etitle, eyear, eimage, egenre} = formErr
 
     // membuat fungsi handle
-    function handleTitle(e) {
-        setTitle(e.target.value)
+    function handleChange (e) {
+        const {name, value} = e.target
+        
+        setFromData({
+            ...formData,
+            [name]: value
+        })
     }
 
-    function handleYear(e) {
-        setYear(e.target.value)
+    function validate() {
+        if (title === "") {
+            setFormErr({etitle: true})
+            return false
+        } else if (year === "") {
+            setFormErr({
+                etitle: false,
+                eyear: true
+            })
+            return false
+        } else if(image === "") {
+            setFormErr({
+                etitle: false,
+                eyear: false,
+                eimage: true
+            })
+            return false
+        } else {
+            setFormErr({
+                etitle: false,
+                eyear: false,
+                eimage: false,
+                egenre: false
+            })
+            return true
+        }
     }
 
-    function handleImage(e) {
-        setImage(e.target.value)
-    }
-    function handleGenre(e) {
-        setGenre(e.target.value)
+    function addMovie() {
+        const movie = {
+            id: nanoid(),
+            title: title,
+            year: year,
+            type: genre,
+            poster: image
+        }
+
+        setMovies([...movies, movie])
     }
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        // jika title kosong maka set error title true
-
-        if (title === "") {
-            setIsTitleError(true)
-        } else if (year === "") {
-            setIsTitleError(false)
-            setIsYearError(true)
-        } else if(image === "") {
-            setIsTitleError(false)
-            setIsYearError(false)
-            setIsImageError(true)
-        } else {
-            const movie = {
-                id: nanoid(),
-                title: title,
-                year: year,
-                type: genre,
-                poster: image
-            }
-    
-            setMovies([...movies, movie])
-            setIsTitleError(false)
-            setIsYearError(false)
-            setIsImageError(false)
-            setIsGenreError(false)
-        }
-
+        validate() && addMovie()
     }
 
     return (
@@ -81,21 +97,21 @@ function FormAddMovie(props){
                     <div className={style.column}>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="" className={style.text__left}>Title</label>
-                            <input type="text" id="title" className={style.form__text} value={title} onChange={handleTitle} />
-                            {isTitleError && <Alert>Title is required</Alert>}
+                            <input type="text" id="title" name="title" className={style.form__text} value={title} onChange={handleChange} />
+                            {etitle && <Alert>Title is required</Alert>}
                             <label htmlFor="" className={style.text__left}>Year</label>
-                            <input type="number" id="years" className={style.form__text} value={year} onChange={handleYear} />
-                            {isYearError && <Alert>Yers is required</Alert>}
+                            <input type="number" id="year" name="year" className={style.form__text} value={year} onChange={handleChange} />
+                            {eyear && <Alert>Yers is required</Alert>}
                             <label htmlFor="" className={style.text__left}>Image</label>
-                            <input type="text" id="image" className={style.form__text} value={image} onChange={handleImage}/>
-                            {isImageError && <Alert>Image is required</Alert>}
+                            <input type="text" id="image" name="image" className={style.form__text} value={image} onChange={handleChange}/>
+                            {eimage && <Alert>Image is required</Alert>}
                             <label htmlFor="" className={style.text__left}>Genre</label>
-                            <select className={style.form__text} id="" onChange={handleGenre}>
+                            <select className={style.form__text} id="genre" name="genre" onChange={handleChange}>
                                 <option value="Drama">Drama</option>
                                 <option value="Action">Action</option>
                                 <option value="Trailer">Trailer</option>
                             </select>
-                            {isGenreError && <Alert>Genre is required</Alert>}
+                            {egenre && <Alert>Genre is required</Alert>}
                             <button className={style.form__button}>Watch</button>
                         </form>
                     </div>

@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid"
 import { useState } from "react"
 import Alert from "../Alert/Alert"
+import Button from "../UI/Button"
 import style from "./FormAddMovie.module.css"
 
 function FormAddMovie(props){
@@ -112,7 +113,8 @@ function FormAddMovie(props){
                                 <option value="Trailer">Trailer</option>
                             </select>
                             {egenre && <Alert>Genre is required</Alert>}
-                            <button className={style.form__button}>Watch</button>
+                            {/* <button className={style.form__button}>Watch</button> */}
+                            <Button variant="primary" full size="lg">Save</Button>
                         </form>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
-import style from "./Hero.module.css"
+import Button from "../UI/Button"
+// import style from "./Hero.module.css"
+import HeroStyled from "./Hero.styled"
 
 function Hero() {
 
@@ -19,24 +21,24 @@ function Hero() {
     useEffect(fetchMovie, [])
 
     return (
-        <div className={style.container}>
-            <section className={style.hero}>
-                <div className={style.hero__left}>
-                    <h2 className={style.hero__title}>{movie.Title}</h2>
-                    <h3 className={style.hero__genre}>Genre: {movie.Genre}</h3>
-                    <p className={style.hero__description}>
+        <HeroStyled>
+            <section>
+                <div>
+                    <h2>{movie.Title}</h2>
+                    <h3>Genre: {movie.Genre}</h3>
+                    <p>
                         {movie.Plot}
                     </p>
-                    <button className={style.hero__button}>Watch</button>
+                    {/* <button>Watch</button> */}
+                    <Button variant="secondary" size="md">Watch Movie</Button>
                 </div>
-                <div className={style.right}>
+                <div style={{flexBasis: '25%'}}>
                     <img 
-                        className={style.hero__image}
                         src={movie.Poster} alt={movie.Title} 
                     />
                 </div>
             </section>
-        </div>
+        </HeroStyled>
     )
 }
 

@@ -8,7 +8,6 @@ function Movie(props) {
 
     const {movies, setMovies} = props
     
-    
     function tambahnFilm(){
         // logic
         const movie = {
@@ -23,11 +22,11 @@ function Movie(props) {
         setMovies([...movies, movie]);
 
     }
-
+    
     return(
         <div className={style.container}>
             <section className={style.movies}>
-                <h2 className={style.movies__title}>Latest Movies</h2>
+                <h2 className={style.movies__title}>{props.title || 'Lasted Movie'}</h2>
                 <div className={style.movie__container}>
 
                     {/* 

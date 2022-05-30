@@ -28,7 +28,7 @@ const HeroStyled = styled.div`
 
     p {
         color: #64748b;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     img {

@@ -2,15 +2,13 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Hero from "../../Component/Hero/Hero"
 import Movie from "../../Component/Movies/Movie"
+import { ENDPOINTS } from "../../utils/contanst/endpoints"
 
 function Popular() {
 
-    const API_KEY = process.env.REACT_APP_API_KEY
-    const URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
 
     // membuat state movies
     const [movies, setMovies] = useState([])
-    const [pageTitle, setPageTitle] = useState("Popular")
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -19,7 +17,7 @@ function Popular() {
 
     async function getPopularMovies() {
         // fetch data menggunakan axios
-        const response = await axios(URL)
+        const response = await axios(ENDPOINTS.POPULAR)
         
         setMovies(response.data.results)
     }
@@ -27,7 +25,7 @@ function Popular() {
     return (
         <div>
             <Hero/>
-            <Movie movies={movies} title={pageTitle}/>
+            <Movie movies={movies} title="Popular"/>
         </div>
     )
 }

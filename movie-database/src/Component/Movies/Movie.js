@@ -6,7 +6,7 @@ import { nanoid } from "nanoid"
 
 function Movie(props) {
 
-    const {movies, setMovies} = props
+    const {title, movies, setMovies} = props
     
     function tambahnFilm(){
         // logic
@@ -26,7 +26,7 @@ function Movie(props) {
     return(
         <div className={style.container}>
             <section className={style.movies}>
-                <h2 className={style.movies__title}>{props.title || 'Lasted Movie'}</h2>
+                <h2 className={style.movies__title}>{title || 'Lasted Movie'}</h2>
                 <div className={style.movie__container}>
 
                     {/* 

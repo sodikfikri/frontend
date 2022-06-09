@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import {ENDPOINTS} from "../../utils/contanst/endpoints"
 import Button from "../UI/Button"
 // import style from "./Hero.module.css"
 import HeroStyled from "./Hero.styled"
@@ -16,8 +17,7 @@ function Hero() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     async function getTrendingMovies() { // mendapatkan 1 data trending movies
-        const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
-        const response = await axios(URL)
+        const response = await axios(ENDPOINTS.HERO)
         
         return response.data.results[0]
     }

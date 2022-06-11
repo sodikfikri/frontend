@@ -4,6 +4,7 @@
 // import Footer from './Component/Footer';
 // import './App.css';
 
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Layout from "./Component/Layout";

@@ -7,7 +7,7 @@ import { updateMovies } from "../../features/movieSlice"
 import {ENDPOINTS} from "../../utils/contanst/endpoints"
 
 function TopRated() {
-    // membuat dispatch
+    // membuat dispatch 
     const dispatch = useDispatch()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

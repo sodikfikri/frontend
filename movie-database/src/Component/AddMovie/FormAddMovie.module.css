@@ -8,6 +8,10 @@
         margin: 5rem;
         text-align: center;
     }
+
+    button {
+        font-weight: bold;
+    }
     
     .form__image {
         max-width: 100%;

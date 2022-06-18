@@ -1,21 +1,23 @@
-import style from "./Movie.module.css"
+// import style from "./Movie.module.css"
+import { Link } from "react-router-dom"
+import MovieStyled from "./Movie.styled"
 
 function Movie(props) {
     // destructing
     const {movie} = props
+    
     return (
-        <div>
-            <div className={style.movie}>
-                <img
-                    className={style.movie__image}
-                    src={movie.poster}
-                    alt=""
-                />
-                <h3 className={style.movie__title}>{movie.title}</h3>
-                <p className={style.movie__date}>{movie.type}</p>
-                <p className={style.movie__date}>{movie.year}</p>
-            </div>
-        </div>
+        <MovieStyled>
+            <img
+                src={movie.poster || `https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                alt=""
+            />
+            <Link to={`/movie/${movie.id}`}>
+                <h3>{movie.title}</h3>
+            </Link>
+            <p>{movie.type}</p>
+            <p>{movie.year || movie.release_date}</p>
+        </MovieStyled>
     )
 }
 

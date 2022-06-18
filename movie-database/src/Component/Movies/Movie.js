@@ -1,47 +1,24 @@
 import style from "./Movie.module.css"
 import MV from "../Movie/Movie"
-import data from "../../utils/contanst/data"
-import { useState } from "react"
-import { nanoid } from "nanoid"
+import { useSelector } from "react-redux"
 
 function Movie(props) {
 
-    const {movies, setMovies} = props
+    const {title} = props
     
-    
-    function tambahnFilm(){
-        // logic
-        const movie = {
-            id: nanoid(5),
-            title: 'Jhon Wick 3',
-            year: '2021',
-            type: 'Movie',
-            poster: 'https://picsum.photos/300/400'
-        }
-        // push data to stata
-        // ...movies = spread => untuk copy data movies
-        setMovies([...movies, movie]);
-
-    }
+    const movies = useSelector((store) => store.movies.movies)
 
     return(
         <div className={style.container}>
             <section className={style.movies}>
-                <h2 className={style.movies__title}>Latest Movies</h2>
+                <h2 className={style.movies__title}>{title || 'Lasted Movie'}</h2>
                 <div className={style.movie__container}>
-
-                    {/* 
-                        looping data movies  
-                    */}
                     {
                         movies.map(function(movie){
                             return <MV key={movie.id} movie={movie} />
                         })
                     }
-
                 </div>
-                {/* menambahkan event on click */}
-                {/* <button onClick={tambahnFilm}>Add Movie</button> */}
             </section>
         </div>
     )

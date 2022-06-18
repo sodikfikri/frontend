@@ -1,14 +1,15 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import Hero from "../../Component/Hero/Hero"
 import Movie from "../../Component/Movies/Movie"
+import { updateMovies } from "../../features/movieSlice"
 import { ENDPOINTS } from "../../utils/contanst/endpoints"
 
 function Popular() {
-
-
     // membuat state movies
-    const [movies, setMovies] = useState([])
+    // membuat dispatch
+    const dispatch = useDispatch()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -19,13 +20,13 @@ function Popular() {
         // fetch data menggunakan axios
         const response = await axios(ENDPOINTS.POPULAR)
         
-        setMovies(response.data.results)
+        dispatch(updateMovies(response.data.results))
     }
 
     return (
         <div>
             <Hero/>
-            <Movie movies={movies} title="Popular"/>
+            <Movie title="Popular"/>
         </div>
     )
 }
